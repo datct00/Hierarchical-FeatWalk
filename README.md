@@ -1,8 +1,9 @@
 # Hierarchical Featwalk
 
-This is a face recognition application built using Python, [Face-Recognition API](https://github.com/ageitgey/face_recognition) and Streamlit framework. The app allows users to upload an image containing faces and performs face recognition using the face recognition library.
-
 This is a modified version of the original [FeatWalk architecture](https://github.com/exceefind/FeatWalk) served for our Computer Vision course, the original work is a very nice work, you can check out yourself. In this version, we proposed a new branch beyond local view named semi-local view as a new filter which allows FeatWalk module is able to attend on correct local patch, so enrich the final feature for the classifier. 
+
+## Architecture 
+![Hierarchical FeatWalk architecture](assets/arch.png)
 
 ## Features
 
@@ -11,8 +12,7 @@ This is a modified version of the original [FeatWalk architecture](https://githu
 - Simple yet more efficient
 - Dirty code
 
-## Architecture 
-![Hierarchical FeatWalk architecture](assets/arch.png)
+
 
 
 ## Compare to the baseline 
