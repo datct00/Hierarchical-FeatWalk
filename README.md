@@ -14,22 +14,20 @@ This is a modified version of the original [FeatWalk architecture](https://githu
 ## Architecture 
 ![Hierarchical FeatWalk architecture](assets/arch.png)
 
+
 ## Compare to the baseline 
-| Method   | miniImageNet 5-Way          | CUB                  |
-|----------|-----------------------------|----------------------|
-|          | ResNet-12     |              | ResNet-18           |       
-|          | 1-shot | 5-shot | 1-shot     | 5-shot              |
-| FeatWalk | 70.21±0.44 | 87.38±0.27 | 85.67±0.38 | 95.44±0.16 |
-| Ours     | 74.83±0.41 (+4.62) | 87.68±0.29 (+0.3) | 88.07±0.33 (+2.4) | 95.62±0.34 (+0.18) |
+### miniImageNet dataset
+| Method   | Backbone | 5-way 1-shot   | 5-way 5-shot |
+|----------|----------|----------------|--------------|
+|FeatWalk  | ResNet-12|70.21±0.44      | 87.38±0.27   |
+| Ours     | ResNet-12|74.83±0.41 (+4.62)|87.68±0.29 (+0.3)|
 
-| Method   | miniImageNet 5-Way               | CUB                        |
-|----------|---------------------------------|----------------------------|
-|          | ResNet-12          |             | ResNet-18           |           |
-|          | 1-shot     | 5-shot | 1-shot      | 5-shot    |
-| FeatWalk | 70.21±0.44 | 87.38±0.27 | 85.67±0.38 | 95.44±0.16 |
-| Ours     | 74.83±0.41 (+4.62) | 87.68±0.29 (+0.3) | 88.07±0.33 (+2.4) | 95.62±0.34 (+0.18) |
+### CUB dataset
 
-
+| Method   | Backbone | 5-way 1-shot   | 5-way 5-shot |
+|----------|----------|----------------|--------------|
+|FeatWalk  | ResNet-18|85.67±0.38      | 95.44±0.16   |
+| Ours     | ResNet-18|88.07±0.33 (+2.4)|95.62±0.34 (+0.18)|
 ## Requirements 
 - Python 3.11 
 
