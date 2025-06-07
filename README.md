@@ -83,7 +83,7 @@ Please refer to the original work for more detail [Here](https://github.com/exce
 sh run.sh
 ```
 
-##Acknowledgments
+## Acknowledgments
 This project builds upon and extends the work presented in the FeatWalk repository, authored by Dalong Chen et al. Their innovative FeatWalk module for enhancing few-shot classification by leveraging local views has been foundational to this implementation. We gratefully acknowledge their contributions to advancing few-shot learning research and providing a well-documented and accessible codebase.
 
 For more details and original usage instructions, please refer to their official repository:
