@@ -89,5 +89,3 @@ This project builds upon and extends the work presented in the FeatWalk reposito
 For more details and original usage instructions, please refer to their official repository:
 https://github.com/exceefind/FeatWalk
 
-## Contact
-If you have any questions, feel free to contact me via email: `chungtiendat8102000@gmail.com`
