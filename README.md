@@ -1,51 +1,74 @@
-# Face recognition app using Streamlit
+# Hierarchical Featwalk
 
 This is a face recognition application built using Python, [Face-Recognition API](https://github.com/ageitgey/face_recognition) and Streamlit framework. The app allows users to upload an image containing faces and performs face recognition using the face recognition library.
 
+This is a modified version of the original [FeatWalk architecture](https://github.com/exceefind/FeatWalk) served for our Computer Vision course, the original work is a very nice work, you can check out yourself. In this version, we proposed a new branch beyond local view named semi-local view as a new filter which allows FeatWalk module is able to attend on correct local patch, so enrich the final feature for the classifier. 
+
 ## Features
 
-- Face detection and recognition
-- Multi-face recognition
-- Option to display recognized faces
-- User-friendly interface
+- Hierarchical architecture: Global view -> Semi-local -> Local view (origin: Global view -> Local view)
+- Improve the performance compared to orginal FeatWalk
+- Simple yet more efficient
+- Dirty code
+
+## Architecture 
+![Hierarchical FeatWalk architecture](assets/arch.png)
+
+## Compare to the baseline 
+| Method   | miniImageNet 5-Way          | CUB                  |
+|----------|-----------------------------|----------------------|
+|          | ResNet-12     |              | ResNet-18           |       
+|          | 1-shot | 5-shot | 1-shot     | 5-shot              |
+| FeatWalk | 70.21±0.44 | 87.38±0.27 | 85.67±0.38 | 95.44±0.16 |
+| Ours     | 74.83±0.41 (+4.62) | 87.68±0.29 (+0.3) | 88.07±0.33 (+2.4) | 95.62±0.34 (+0.18) |
+
+| Method   | miniImageNet 5-Way               | CUB                        |
+|----------|---------------------------------|----------------------------|
+|          | ResNet-12          |             | ResNet-18           |           |
+|          | 1-shot     | 5-shot | 1-shot      | 5-shot    |
+| FeatWalk | 70.21±0.44 | 87.38±0.27 | 85.67±0.38 | 95.44±0.16 |
+| Ours     | 74.83±0.41 (+4.62) | 87.68±0.29 (+0.3) | 88.07±0.33 (+2.4) | 95.62±0.34 (+0.18) |
+
 
 ## Requirements 
-- Python 3.9
-- Streamlit 1.22.0
-- face_recognition 
+- Python 3.11 
 
 ## Repository structure
 ```bash
-├───dataset
-│   │───ID_Name.jpg
-│   │───...
-├───pages
-│   ├───1_🔧_Updating.py
-│   └───2_💾_Database
-├───Tracking.py
-│───utils.py
-├───config.yaml 
-├───requirements.txt
-├───packages.txt
-└───README.md
+├───data
+│   │───datamgr.py
+│   │───dataset.py
+├───methods
+│   ├───bdc_module.py
+│   ├───stl_deepbdc.py
+│   ├───template.py
+│   └───FeatWalk.py
+├───network
+│   └───resnet.py
+│───utils
+│   ├───loss.py
+│   └───utils.py
+├───README.md 
+├───eval.py
+└───run.sh
 ```
 
 ## Description
-- **dataset**: contains images of people to be recognized. The file name format is ID_Name.jpg. `For example, 1_Elon_Musk.jpg, 2_Jenna_Ortega.jpg, 3_Bill_Gates.jpg, etc.` It is freely to use jpg, jpeg or png format.
-- **pages**: contains the code for each page of the app. If you want to add more pages, you can create a new file which format is `Order_Icon_Pagename` in this folder, or just no-icon page with format `Order_Pagename`.
-- **Tracking.py**: home page of the app, using for tracking real-time using webcam and picture.
-- **utils.py**: contains the functions utilized by the app.
-- **config.yaml**: contains the configuration for the app such as path of dataset dir and prompt messages.
-- **requirements.txt**: contains the dependencies for the app.
-- **packages.txt**: contains the packages for the app used to deploy on Streamlit Cloud.
+- **data**: Contains data-related scripts for managing datasets and preparing inputs for training and evaluation..
+- **methods**: Implements the core algorithms, including the FeatWalk method and other baseline or complementary modules relevant to few-shot learning.
+- **network**: Defines neural network architectures such as ResNet used as feature extractors.
+- **utils**: Provides supporting utilities like loss functions and helper methods for various tasks.
+- **eval.py**: A standalone evaluation script to test model performance on specified datasets..
+- **run.sh**: A shell script to streamline running experiments or training sessions.
+- **requirement.txt**: required packages.
 
 
 
 ## Installation
 1. Clone the repository
 ```bash
-git clone https://github.com/datct00/Face-recognition-app-using-Streamlit.git
-cd Face-recognition-app-using-Streamlit
+git clone https://github.com/datct00/Hierarchical-FeatWalk.git
+cd Hierarchical-FeatWalk
 ```
 
 2. Install the dependencies
@@ -53,17 +76,14 @@ cd Face-recognition-app-using-Streamlit
 pip install -r requirements.txt
 ```
 
-3. Run the app
+3. Prepare dataset 
+Please refer to the original work of [FeatWalk](https://github.com/exceefind/FeatWalk?tab=readme-ov-file#preparation-before-running)
+
+4. Run
+Please refer to the original work for more detail [Here](https://github.com/exceefind/FeatWalk?tab=readme-ov-file#running-commands)
 ```bash
-streamlit run Tracking.py
+sh run.sh
 ```
-
-## Usage
-1. Tracking real-time using webcam 
-2. Tracking using a image file 
-3. Updating database (adding, deleting and updating)
-4. Viewing the database
-
 
 ## Demo
 
